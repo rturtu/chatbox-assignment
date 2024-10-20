@@ -26,6 +26,7 @@ I chose Next.JS as the framework for this assignment because it's easy to build 
 
 
 # Details
+ - ChatBot can be opened by the Chat Widget in the bottor right of the screen
  - I served the stock data json as a static file so the API can consume it.
  - The API requests the json (equivalent to DB call) and filters the requested data
  - The frontend requests data from backend according to the options selected by the user.
