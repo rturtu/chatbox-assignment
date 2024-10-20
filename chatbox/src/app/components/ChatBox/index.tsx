@@ -1,10 +1,12 @@
 'use client';
 import React from "react";
-import { ChatWindow } from "./ChatWindow";
+import { Message, DEFAULT_MESSAGES } from "./types";
+import { useSessionStorage } from "@/app/hooks/useSessionStorage";
 
-export const ChatBox = () => {
+const ChatBox = () => {
 
     const [open, setOpen] = React.useState(false);
+    const [messages, setMessages] = useSessionStorage<Message[]>('messages', DEFAULT_MESSAGES);
 
     return (
         <div>
@@ -17,7 +19,18 @@ export const ChatBox = () => {
                     <span className="cursor-pointer" onClick={() => setOpen(false)} >X</span>
                 </div>
                 <div className="grow overflow-auto" >
-
+                    <div>
+                        {messages.map((message, index) => {
+                            return <div key={index} className={message.author === 'BOT' ? 'bg-sky-400 p-2 m-2 rounded-xl' : 'bg-slate-400 p-2 m-2 rounded-xl'} >
+                                {message.content}
+                                {message.options.map((option, index) => {
+                                    return <div key={index} className="cursor-pointer text-black bg-sky-200 p-2 m-2 rounded-xl" >
+                                        {option.content}
+                                    </div>
+                                })}
+                            </div>
+                        })}
+                    </div>
                 </div>
                 <div className="w-full bg-slate-400 p-2" >
                     <span>Please select an option</span>
@@ -26,3 +39,5 @@ export const ChatBox = () => {
         </div>
     );
 }
+
+export default ChatBox;
