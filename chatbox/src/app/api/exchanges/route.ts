@@ -1,7 +1,7 @@
 import { getStockDataJson } from "./getExchangeDataJson";
 
 export async function GET(request: Request) {
-    
+
     let stockDataJson;
     try {
         stockDataJson = await getStockDataJson(request);
@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     const stockExchangesFiltered = stockDataJson.map((stock: any) => {
         return {
             code: stock.code,
-            name: stock.stockExchange,
+            stockExchange: stock.stockExchange,
         }
     });
 
