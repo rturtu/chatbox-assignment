@@ -1,3 +1,10 @@
+I chose Next.JS as the framework for this assignment because it's easy to build both backend and frontend in the same TypeScript project. It's also very easy to deploy.
+
+
+# Deployment
+[https://chatbox-assignment-amber.vercel.app/](https://chatbox-assignment-amber.vercel.app/)
+
+
 # API 
 
 [/exchanges](https://github.com/rturtu/chatbox-assignment/blob/main/chatbox/src/app/api/exchanges/route.ts) - get all stock exchanges 
