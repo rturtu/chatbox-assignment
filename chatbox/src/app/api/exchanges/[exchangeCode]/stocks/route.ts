@@ -1,4 +1,5 @@
 import { getStockDataJson } from "../../getExchangeDataJson";
+import { Stock } from "../../types";
 import { exchangeSelector } from "./exchangeSelector";
 
 export async function GET(request: Request, { params }: { params: { exchangeCode: string } }) {
@@ -7,7 +8,7 @@ export async function GET(request: Request, { params }: { params: { exchangeCode
     
     let exchange;
     try {
-        
+
         const stockDataJson = await getStockDataJson(request);
         exchange = exchangeSelector(stockDataJson, exchangeCode);
 
@@ -19,7 +20,7 @@ export async function GET(request: Request, { params }: { params: { exchangeCode
         });
     }
 
-    const stocks = exchange.topStocks.map((stock: any) => {
+    const stocks = exchange.topStocks.map((stock: Stock) => {
         return {
             code: stock.code,
             stockName: stock.stockName,

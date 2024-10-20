@@ -1,7 +1,7 @@
 'use client';
 import React, { Dispatch, SetStateAction } from "react";
 
-export const useSessionStorage = <T extends unknown>(key: string, initialValue: T):[T, Dispatch<SetStateAction<T>>] => {
+export const useSessionStorage = <T>(key: string, initialValue: T):[T, Dispatch<SetStateAction<T>>] => {
 
     const getStoredValue = () => {
         const value = sessionStorage.getItem(key);

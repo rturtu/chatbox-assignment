@@ -1,3 +1,4 @@
+import { Exchange } from '@/app/api/exchanges/types';
 import { Message, MessageAuthor, MessageType } from '../types';
 
 export const getExchanges = async () => {
@@ -12,7 +13,7 @@ export const getExchangesMessage = async ():Promise<Message> => {
         content: `Please select a Stock Exchange`,
         type: MessageType.EXCHANGE_MENU,
         author: MessageAuthor.BOT,
-        options: exchangesData.data.map((exchange: any) => ({
+        options: exchangesData.data.map((exchange: Exchange) => ({
             content: exchange.stockExchange,
             exchangeCode: exchange.code,
         })),

@@ -1,4 +1,5 @@
 import { getStockDataJson } from "./getExchangeDataJson";
+import { Exchange } from "./types";
 
 export async function GET(request: Request) {
 
@@ -13,7 +14,7 @@ export async function GET(request: Request) {
         });
     }
 
-    const stockExchangesFiltered = stockDataJson.map((stock: any) => {
+    const stockExchangesFiltered = stockDataJson.map((stock: Exchange) => {
         return {
             code: stock.code,
             stockExchange: stock.stockExchange,

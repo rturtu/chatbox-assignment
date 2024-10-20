@@ -17,7 +17,8 @@ export const getStockDataJson = async (request: Request) => {
     try {
         stockDataList = await stockData.json();
     } catch (error) {
-        throw new Error('Could not parse data');
+        const errorMessage = (error as Error).message;
+        throw new Error(errorMessage ?? 'Could not parse data');
     }
     return stockDataList;
 }

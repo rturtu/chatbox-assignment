@@ -22,9 +22,9 @@ const ChatBox = () => {
 
         getExchangesMessage().then((message) => {
             setMessages((messages) => [...messages, message]);
-            console.log('ajunge aici');
             setLoading(false);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleOptionClick = async (message: Message, option: MessageOption) => {
