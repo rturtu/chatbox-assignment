@@ -5,19 +5,28 @@ export enum MessageType {
     TEXT = 'TEXT',
 }
 
+export enum MessageOptionType {
+    BACK = 'BACK',
+    HOME = 'HOME',
+}
+
 export enum MessageAuthor {
     BOT = 'BOT',
     USER = 'USER',
+}
+
+export type MessageOption = {
+    content: string;
+    exchangeCode?: string;
+    stockCode?: string;
+    type?: MessageOptionType;
 }
 
 export type Message = {
     content: string;
     author: MessageAuthor;
     type: MessageType;
-    options: {
-        content: string;
-        code: string;
-    }[];
+    options?: MessageOption[];
 }
 
 export const DEFAULT_MESSAGES: Message[] = [
@@ -25,25 +34,5 @@ export const DEFAULT_MESSAGES: Message[] = [
         content: `Hello! Welcome to LSEG. I'm here to help you.`,
         author: MessageAuthor.BOT,
         type: MessageType.TEXT,
-        options: [],
-    },
-    {
-        content: `Please select a Stock Exchange`,
-        author: MessageAuthor.BOT,
-        type: MessageType.EXCHANGE_MENU,
-        options: [
-            {
-                content: 'London Stock Exchange',
-                code: 'LSE',
-            },
-            {
-                content: 'New York Stock Exchange',
-                code: 'NYSE',
-            },
-            {
-                content: 'NASDAQ Stock Exchange',
-                code: 'HKSE',
-            },
-        ],
     }
 ]
